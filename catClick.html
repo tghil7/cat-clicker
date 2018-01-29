@@ -6,19 +6,23 @@
 </head>
 <body>
     <ul id="cat-list"></ul>
-    <div id="cat">
-
-        <h2 id="cat-name" data-bind="text:currentCat().name"></h2>
-        <div id="cat-count" data-bind="text:currentCat().clickCount"></div>
-		 <h2 id="cat-level" data-bind="text:currentCat().level"></h2>
-		  <h3 id="cat-nickname" ></h3>
-		 <ul  data-bind="foreach:currentCat().nicknames">
-			<li data-bind="text:nickname"></li>
-		 </ul>
-        <img id="cat-img" src="" alt="cute cat" data-bind="click:incrementCounter, attr:{src:currentCat().imgSrc}">
+	<div  data-bind="foreach:catList">
+			<a id ="cat-link" href="" data-bind="click:$parent.updateCat, text:name"></a><br>
+	</div>
+    <div id="cat" data-bind="with:currentCat">
+    <h2 id="cat-name" data-bind="text:name"></h2>
+    <div id="cat-count" data-bind="text:clickCount"></div>
+	<h2 id="cat-level" data-bind="text:level"></h2>
+	<h3 id="cat-nickname" ></h3>
+	<ul>
+		<li data-bind="text:nicknames"></li>
+	</ul>
+        <img id="cat-img" src="" alt="cute cat" data-bind="click:$parent.incrementCounter, attr:{src:imgSrc}">
 
     </div>
     <script src="js/lib/knockout-3.4.2.js"></script>
     <script src="js/app.js"></script>
+	<!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </body>
 </html>
